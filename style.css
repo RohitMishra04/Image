@@ -1,0 +1,234 @@
+/* Reset default browser margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling with background image */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: url('background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundFadeIn 1s ease-out forwards;
+}
+
+/* Fade-in animation for background */
+@keyframes backgroundFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Header styling with slide-in effect */
+h2 {
+    text-align: center;
+    color: silver;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: headerSlideIn 0.8s ease-out forwards;
+}
+
+/* Slide-in animation for header */
+@keyframes headerSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Drop area for drag and drop functionality */
+#dropArea {
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    border: 2px dashed #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    font-size: 18px;
+    color: #aaa;
+    border-radius: 10px;
+    background-color: rgba(250, 250, 250, 0.9);
+    transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: dropAreaFadeIn 1s ease-out forwards;
+}
+
+/* Fade-in animation for drop area */
+@keyframes dropAreaFadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#dropArea:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+#dropArea.dragover {
+    border-color: #4caf50;
+    background-color: #e0ffe0;
+    animation: dropAreaShake 0.3s ease;
+}
+
+/* Shake animation when dragging over */
+@keyframes dropAreaShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Hide the file input */
+.hidden {
+    display: none;
+}
+
+/* Canvas container for layout */
+.canvas-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: canvasesFadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Fade-in animation for canvases */
+@keyframes canvasesFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style for both canvases */
+canvas {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 45%;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+canvas:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Button container to center buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: buttonsFadeIn 1s ease-out forwards;
+    animation-delay: 1s;
+}
+
+/* Fade-in animation for buttons */
+@keyframes buttonsFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhance and Download button styles */
+button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: buttonScaleIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes buttonScaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    background-color: #388e3c;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.hidden {
+    display: none;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #4caf50;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+    .canvas-container {
+        flex-direction: column;
+    }
+
+    canvas {
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
